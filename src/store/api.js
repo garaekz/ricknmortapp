@@ -7,7 +7,13 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getCharacters: builder.query({
-      query: (page) => `character?page=${page}`,
+      query: ({page, status = '', species = '', type = '', gender = ''}) => {
+        console.log('page', page)
+        console.log('status', status)
+        console.log('species', species)
+        console.log('type', type)
+        return `character?page=${page}&status=${status}&species=${species}&type=${type}&gender`
+      },
     }),
   }),
 })
