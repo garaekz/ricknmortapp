@@ -5,7 +5,7 @@ import { IoMaleFemale } from "react-icons/io5";
 export default function CharacterCardSkeleton() {
   
   return (
-    <div className="animate-pulse w-full flex flex-col bg-white dark:bg-slate-700 rounded-3xl items-center p-4 h-80">
+    <div className="animate-pulse w-full flex flex-col bg-white dark:bg-slate-800 rounded-3xl items-center p-4 h-80">
       <div>
         <div className={`rounded-full border-8 bg-gray-200 dark:bg-gray-600 border-gray-200 dark:border-gray-600 w-40 h-40`}>
         </div>

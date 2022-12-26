@@ -8,11 +8,7 @@ export const api = createApi({
   endpoints: (builder) => ({
     getCharacters: builder.query({
       query: ({page, status = '', species = '', type = '', gender = ''}) => {
-        console.log('page', page)
-        console.log('status', status)
-        console.log('species', species)
-        console.log('type', type)
-        return `character?page=${page}&status=${status}&species=${species}&type=${type}&gender`
+        return `character?page=${page}&status=${status}&species=${species}&type=${type}&gender=${gender}`
       },
     }),
   }),

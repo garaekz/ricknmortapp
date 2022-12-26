@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { BsCheckCircleFill, BsCircle } from "react-icons/bs";
-import { setSpecieFilter } from "../store/specieFilterSlice";
+import { toggleFilter } from "../../store/filtersSlice";
 
-export default function FiltersComponent() {
+export default function SpeciesFilterComponent() {
   const dispatch = useDispatch();
-  const selectedSpecie = useSelector((state) => state.specieFilter.value);
+  const selected = useSelector((state) => state.filters.species);
 
   const species = [
     { name: "Human", value: "human" },
@@ -22,30 +22,30 @@ export default function FiltersComponent() {
   return (
     <>
       <div className="flex px-8 mb-4">
-        <div className="border-b border-gray-400 w-full relative bottom-3"></div>
-        <div className="mx-2 text-gray-400 uppercase font-semibold text-lg">
+        <div className="border-b dark:border-gray-400 border-slate-700 w-full relative bottom-3"></div>
+        <div className="mx-2 dark:text-gray-400 text-slate-700 uppercase font-semibold text-lg">
           Species
         </div>
-        <div className="border-b border-gray-400 w-full relative bottom-3"></div>
+        <div className="border-b dark:border-gray-400 border-slate-700 w-full relative bottom-3"></div>
       </div>
       <div className="flex flex-col px-8">
-        <ul className="flex flex-col text-gray-200 font-medium">
-          {species.map((specie, index) => (
+        <ul className="flex flex-col dark:text-gray-200 text-slate-600 font-medium">
+          {species.map((element, index) => (
             <li className="mb-2" key={index}>
               <button
                 className="flex items-center"
                 onClick={() => {
-                  dispatch(setSpecieFilter(specie.value));
+                  dispatch(toggleFilter({type: 'species', value: element.value}));
 
                 }}
               >
-                {selectedSpecie === specie.value ? (
+                {selected === element.value ? (
                   <BsCheckCircleFill className="text-cyan-600 mr-2 rounded-full" />
                 ) : (
-                  <BsCircle className="text-gray-400 mr-2" />
+                  <BsCircle className="dark:text-gray-400 text-slate-700 mr-2" />
                 )}
-                <span className={`${selectedSpecie === specie.value ? 'scale-110 ml-2':''} hover:scale-110 duration-300`}>
-                  {specie.name}
+                <span className={`${selected === element.value ? 'scale-110 ml-2':''} hover:scale-110 duration-300`}>
+                  {element.name}
                 </span>
               </button>
             </li>
