@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
 import {
   Link,
-  useLocation,
   useNavigate,
-  useSearchParams,
 } from "react-router-dom";
 import CharacterCardComponent from "../components/CharacterCardComponent";
 import CharacterCardSkeleton from "../components/CharacterCardSkeleton";
 import { useGetCharactersQuery } from "../store/api";
 import { useQuery } from "../utils/useQuery";
-import FiltersComponent from "../components/filters/FiltersComponent";
 import { useSelector } from "react-redux";
-import { ImSpinner9 } from "react-icons/im";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import qs from "qs";
+import { FiArrowLeft, FiArrowRight, FiX } from "react-icons/fi";
+import FilterButtonComponent from "../components/FilterButtonComponent";
+import FilterMenuComponent from "../components/FilterMenuComponent";
 
 function HomePage() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const filterMenu = useSelector((state) => state.filterMenu);
   let query = useQuery();
   const species = useSelector((state) => state.filters.species);
   const status = useSelector((state) => state.filters.status);
@@ -80,16 +77,17 @@ function HomePage() {
   };
 
   return (
-    <div className="">
-      <div className="w-full flex flex-wrap mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 pb-24">
+    <div className={`${filterMenu ? 'max-h-96 -mt-30 h-full overflow-hidden':''}`}>
+      <div className="w-full flex flex-wrap mx-auto max-w-7xl sm:px-6 lg:px-8 pb-24">
         <div className="lg:w-1/4 md:w-1/3 flex flex-col">
-          <div className="scrollbar hidden md:block fixed z-10">
-            <FiltersComponent />
-          </div>
+          <FilterMenuComponent />
         </div>
         <div className="lg:w-3/4 md:w-2/3 flex flex-wrap">
-          <div className="flex w-full justify-end items-center text-gray-400 dark:text-gray-400 font-bold text-xl">
-            Page {page} of {data && data.info.pages}
+          <div className="px-4 flex w-full justify-between items-center text-gray-400 dark:text-gray-400 font-bold text-xl">
+            <FilterButtonComponent />
+            <span className="p-2">
+              Page {page} of {data && data.info.pages}
+            </span>
           </div>
           {renderData()}
         </div>

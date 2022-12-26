@@ -24,9 +24,14 @@ export const filterSlice = createSlice({
         default:
           break;
       }
+    },
+    clearFilters: (state, action) => {
+      state.species = "";
+      state.gender = "";
+      state.status = "";
     }
   }
 });
 
-export const { toggleFilter } = filterSlice.actions;
+export const { toggleFilter, clearFilters } = filterSlice.actions;
 export default filterSlice.reducer;

@@ -3,6 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { isDarkMode, setDarkMode } from '../utils/darkModeToggler'
 import { api } from './api'
 import darkModeSlice from './darkModeSlice'
+import filterMenuSlice from './filterMenuSlice'
 import filterSlice from './filtersSlice'
 
 const persistedState = async () => {
@@ -18,6 +19,7 @@ export const store = configureStore({
   reducer: {
     filters: filterSlice,
     darkMode: darkModeSlice,
+    filterMenu: filterMenuSlice,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -26,7 +28,7 @@ export const store = configureStore({
 
 store.subscribe(() => {
   const darkMode = store.getState().darkMode;
-  console.log('darkMode', darkMode)
+  console.log('store', store.getState())
   setDarkMode(darkMode);
 })
 
