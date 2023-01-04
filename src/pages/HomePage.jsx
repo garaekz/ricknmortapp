@@ -87,7 +87,7 @@ function HomePage() {
       </div>
       <div className="fixed bottom-0 left-[45%] w-[200px] py-4">
         <div className="flex">
-          {parseInt(page) === 1 ? (
+          {isFetching || (parseInt(page) === 1) || error ? (
             <button
               className="p-4 bg-slate-500 dark:text-gray-400 rounded mx-2"
               disabled
@@ -109,7 +109,7 @@ function HomePage() {
           >
             {page}
           </button>
-          {data && data.info.next === null ? (
+          {isFetching || (data && data.info.next === null) || error ? (
             <button
               className="p-4 bg-slate-500 dark:text-gray-400 rounded mx-2"
               disabled
