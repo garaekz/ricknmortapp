@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
 import LocationsPage from "./pages/LocationsPage";
+import CharacterPage from "./pages/CharacterPage";
 
 export const navigation = [
   {
@@ -13,6 +14,12 @@ export const navigation = [
     name: "Locations",
     path: "/locations",
     element: <LocationsPage />,
+  },
+  {
+    name: "Character",
+    path: "/character/:id",
+    element: <CharacterPage />,
+    hidden: true,
   }
 ];
 

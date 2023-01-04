@@ -10,16 +10,19 @@ export default function FilterMenuComponent() {
   return (
     <div
       className={`${
-        filterMenu ? "bg-white absolute top-0 w-full pb-16 " : "hidden"
-      } scrollbar md:block fixed z-10 dark:bg-slate-700 dark:text-gray-400 overflow-y-auto min-h-screen pb-24`}
+        filterMenu ? "bg-white absolute top-0 bottom-0 h-full w-full z-10 flex flex-col" : "hidden"
+      } md:block dark:bg-slate-700 dark:text-gray-400`}
     >
-      { filterMenu && <div className="p-8 flex justify-end">
+      { filterMenu && 
+      <div className="p-6 flex justify-end">
         <button onClick={() => dispatch(toggleFilterMenu())}>
           <FiX className="text-2xl" />
         </button>
       </div>
       }
-      <FiltersComponent />
+      <div className="min-h-fit max-h-fit h-full overflow-y-scroll md:overflow-y-auto scrollbar">
+        <FiltersComponent />
+      </div>
     </div>
   );
 }

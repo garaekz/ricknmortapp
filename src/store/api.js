@@ -11,7 +11,10 @@ export const api = createApi({
         return `character?page=${page}&status=${status}&species=${species}&type=${type}&gender=${gender}`
       },
     }),
+    getSingleCharacter: builder.query({
+      query: (id) => `character/${id}`,
+    }),
   }),
 })
 
-export const { useGetCharactersQuery } = api
+export const { useGetCharactersQuery, useGetSingleCharacterQuery } = api

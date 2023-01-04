@@ -10,8 +10,6 @@ const persistedState = async () => {
   return await isDarkMode();
 }
 
-console.log('persistedState', await persistedState())
-
 export const store = configureStore({
   preloadedState: {
     darkMode: await persistedState(),
@@ -28,7 +26,6 @@ export const store = configureStore({
 
 store.subscribe(() => {
   const darkMode = store.getState().darkMode;
-  console.log('store', store.getState())
   setDarkMode(darkMode);
 })
 

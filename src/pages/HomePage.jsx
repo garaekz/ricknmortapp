@@ -49,16 +49,6 @@ function HomePage() {
       ));
     }
 
-    // I dunno if this is the best way to do it...
-
-    // if (isFetching) {
-    //   return (
-    //     <div className="w-full h-96 flex justify-center items-center dark:text-cyan-400 font-bold text-2xl">
-    //       <ImSpinner9 className="animate-spin" />
-    //     </div>
-    //   )
-    // }
-
     if (error && error.status === 404) {
       return (
         <div className="w-full h-96 flex justify-center items-center dark:text-gray-200 font-bold text-2xl">
