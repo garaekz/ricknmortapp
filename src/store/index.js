@@ -27,7 +27,6 @@ export const store = configureStore({
 store.subscribe(() => {
   const darkMode = store.getState().darkMode;
   setDarkMode(darkMode);
-  console.log('darkMode', darkMode)
 })
 
 setupListeners(store.dispatch)

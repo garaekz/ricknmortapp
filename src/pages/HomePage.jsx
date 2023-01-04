@@ -46,7 +46,7 @@ function HomePage() {
       ));
     }
 
-    if (error && error.status === 404) {
+    if ((error && error.status === 404) || !data || data.results.length === 0) {
       return (
         <div className="w-full h-96 flex justify-center items-center dark:text-gray-200 font-bold text-2xl">
           No results found :c
