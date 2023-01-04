@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CharacterCardComponent from "../components/CharacterCardComponent";
 import CharacterCardSkeleton from "../components/CharacterCardSkeleton";
 import { useGetCharactersQuery } from "../store/api";
@@ -67,61 +64,69 @@ function HomePage() {
   };
 
   return (
-    <div className={`${filterMenu ? 'max-h-96 -mt-30 h-full overflow-hidden':''}`}>
-      <div className="w-full flex flex-wrap mx-auto max-w-7xl sm:px-6 lg:px-8 pb-24">
-        <div className="lg:w-1/4 md:w-1/3 flex flex-col">
-          <FilterMenuComponent />
-        </div>
-        <div className="lg:w-3/4 md:w-2/3 flex flex-wrap">
-          <div className="px-4 flex w-full justify-between items-center text-gray-400 dark:text-gray-400 font-bold text-xl">
-            <FilterButtonComponent />
-            <span className="p-2">
-              Page {page} of {data && data.info.pages}
-            </span>
+    <>
+      <div
+        className={`${
+          filterMenu ? "max-h-96 -mt-30 h-full overflow-hidden" : ""
+        }`}
+      >
+        <div className="w-full flex flex-wrap mx-auto max-w-7xl sm:px-6 lg:px-8 pb-24">
+          <div className="lg:w-1/4 md:w-1/3 flex flex-col">
+            <FilterMenuComponent />
           </div>
-          {renderData()}
+          <div className="lg:w-3/4 md:w-2/3 flex flex-wrap">
+            <div className="px-4 flex w-full justify-between items-center text-gray-400 dark:text-gray-400 font-bold text-xl">
+              <FilterButtonComponent />
+              <span className="p-2">
+                Page {page} of {data && data.info.pages}
+              </span>
+            </div>
+            {renderData()}
+          </div>
         </div>
       </div>
-      <div className="w-full flex justify-center fixed bottom-0">
-        {parseInt(page) === 1 ? (
-          <button
-            className="p-4 bg-slate-500 dark:text-gray-400 rounded mx-2 my-8"
-            disabled
-          >
-            <FiArrowLeft />
-          </button>
-        ) : (
-          <Link
-            className="p-4 bg-slate-600 dark:text-gray-200 rounded mx-2 my-8"
-            to={`?page=${parseInt(page) - 1}`}
-          >
-            <FiArrowLeft />
-          </Link>
-        )}
+      <div className="fixed bottom-0 left-[45%] w-[200px] py-4">
+        <div className="flex">
+          {parseInt(page) === 1 ? (
+            <button
+              className="p-4 bg-slate-500 dark:text-gray-400 rounded mx-2"
+              disabled
+            >
+              <FiArrowLeft />
+            </button>
+          ) : (
+            <Link
+              className="p-4 bg-slate-600 dark:text-gray-200 rounded mx-2"
+              to={`?page=${parseInt(page) - 1}`}
+            >
+              <FiArrowLeft />
+            </Link>
+          )}
 
-        <button
-          className="px-5 text-xl bg-slate-400 dark:text-white font-bold rounded mx-2 my-8"
-          disabled
-        >
-          {page}
-        </button>
-        {data && data.info.next === null ? (
           <button
-            className="p-4 bg-slate-500 dark:text-gray-400 rounded mx-2 my-8"
+            className="px-5 text-xl bg-slate-400 dark:text-white font-bold rounded mx-2"
             disabled
           >
-            <FiArrowRight />
+            {page}
           </button>
-        ) : (
-          <Link
-            className="p-4 bg-slate-600 dark:text-gray-200 rounded mx-2 my-8"
-            to={`?page=${parseInt(page) + 1}`}
-          >
-            <FiArrowRight />
-          </Link>
-        )}
+          {data && data.info.next === null ? (
+            <button
+              className="p-4 bg-slate-500 dark:text-gray-400 rounded mx-2"
+              disabled
+            >
+              <FiArrowRight />
+            </button>
+          ) : (
+            <Link
+              className="p-4 bg-slate-600 dark:text-gray-200 rounded mx-2"
+              to={`?page=${parseInt(page) + 1}`}
+            >
+              <FiArrowRight />
+            </Link>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
