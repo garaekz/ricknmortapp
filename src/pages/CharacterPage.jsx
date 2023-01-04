@@ -20,10 +20,10 @@ function CharacterPage() {
                   : data.status === "Dead"
                   ? "border-red-700"
                   : "border-gray-700"
-              } rounded-full md:rounded-none md:rounded-t-md w-40 h-40 md:border-0 border-8`}
+              } rounded-full md:rounded-none md:rounded-t-md w-40 h-40 md:w-[300px] lg:w-[450px] md:h-auto md:border-0 border-8`}
             >
               <img
-                className="rounded-full  md:rounded-none md:rounded-t-md w-40 h-40 md:w-[500px] h-auto object-cover"
+                className="rounded-full md:rounded-none md:rounded-t-md w-40 md:w-[300px] lg:w-[450px]"
                 loading="lazy"
                 src={data.image}
                 alt={data.name}
@@ -43,7 +43,7 @@ function CharacterPage() {
           </div>
           <div className="flex flex-col mt-4 w-full md:pl-16">
             <div className="text-center">
-              <h1 className="text-2xl md:text-5xl font-bold text-gray-800 dark:text-white leading-none">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white leading-none">
                 {data.name}
               </h1>
             </div>
