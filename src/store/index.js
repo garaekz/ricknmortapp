@@ -6,13 +6,13 @@ import darkModeSlice from './darkModeSlice'
 import filterMenuSlice from './filterMenuSlice'
 import filterSlice from './filtersSlice'
 
-const persistedState = async () => {
-  return await isDarkMode();
+const persistedState = () => {
+  return isDarkMode();
 }
 
 export const store = configureStore({
   preloadedState: {
-    darkMode: await persistedState(),
+    darkMode: persistedState(),
   },
   reducer: {
     filters: filterSlice,
@@ -27,6 +27,7 @@ export const store = configureStore({
 store.subscribe(() => {
   const darkMode = store.getState().darkMode;
   setDarkMode(darkMode);
+  console.log('darkMode', darkMode)
 })
 
 setupListeners(store.dispatch)

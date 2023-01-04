@@ -1,12 +1,10 @@
-import localforage from "localforage";
-
-export const setDarkMode = async (mode) => {
-  const currentMode = await localforage.getItem("darkMode");
+export const setDarkMode = (mode) => {
+  const currentMode = localStorage.getItem("darkMode");
   if (currentMode !== mode) {
-    await localforage.setItem("darkMode", mode);
+    localStorage.setItem("darkMode", mode);
   }
 };
 
-export const isDarkMode = async () => {
-  return await localforage.getItem("darkMode");
+export const isDarkMode = () => {
+  return localStorage.getItem("darkMode") === "true";
 }

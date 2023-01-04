@@ -6,13 +6,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toggleMode } from "../store/darkModeSlice";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { TfiGithub } from "react-icons/tfi";
+import { BsGithub } from "react-icons/bs";
 
 export default function NavbarComponent() {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.darkMode);
+  
   return (
     <Disclosure as="nav" className="dark:bg-gray-800 bg-white fixed w-full top-0 z-10">
       {({ open }) => (
@@ -70,7 +71,7 @@ export default function NavbarComponent() {
                 <button
                   onClick={() => dispatch(toggleMode())}
                   type="button"
-                  className="p-2 rounded-full dark:bg-gray-800 text-gray-400 dark:hover:text-white hover:text-gray-800 focus:outline-none hover:dark:bg-gray-700 hover:bg-gray-100"
+                  className="p-2 rounded-full dark:bg-gray-800 dark:text-gray-400 text-gray-600 dark:hover:text-white hover:text-gray-800 focus:outline-none hover:dark:bg-gray-700 hover:bg-gray-100"
                 >
                   <span className="sr-only">Toggle dark mode</span>
                   {darkMode ? (
@@ -82,9 +83,9 @@ export default function NavbarComponent() {
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
-                  <div className="dark:bg-gray-800 text-gray-400 dark:hover:text-white hover:text-gray-800 ">
+                  <div className="p-2 rounded-full dark:bg-gray-800 dark:text-gray-400 text-gray-600 dark:hover:text-white hover:text-gray-800 focus:outline-none hover:dark:bg-gray-700 hover:bg-gray-100">
                     <a href="https://github.com/garaekz/ricknmortapp" target="_blank" rel="noopener noreferrer">
-                      <TfiGithub className="h-6 w-6" aria-hidden="true" />
+                      <BsGithub className="h-6 w-6" aria-hidden="true" />
                     </a>
                   </div>
                 </Menu>
