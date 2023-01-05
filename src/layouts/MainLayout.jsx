@@ -11,7 +11,7 @@ export default function MainLayout() {
     <div className={darkMode ? "dark" : ""}>
       <div className={`scrollbar dark:bg-slate-700 bg-slate-200 min-h-screen`}>
         <NavbarComponent />
-        <main className="pt-20">
+        <main className="pt-8">
           <Outlet />
         </main>
         <FooterComponent />

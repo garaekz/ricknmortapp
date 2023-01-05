@@ -20,7 +20,7 @@ export default function FilterMenuComponent() {
         </button>
       </div>
       }
-      <div className="min-h-fit max-h-fit h-full overflow-y-scroll md:overflow-y-auto scrollbar">
+      <div className="md:min-h-[300px] sm:max-h-[75%] md:max-h-[85%] md:fixed min-h-fit max-h-fit md:h-full overflow-y-scroll md:overflow-y-auto scrollbar">
         <FiltersComponent />
       </div>
     </div>

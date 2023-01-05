@@ -15,7 +15,7 @@ export default function NavbarComponent() {
   const darkMode = useSelector((state) => state.darkMode);
   
   return (
-    <Disclosure as="nav" className="dark:bg-gray-800 bg-white fixed w-full top-0 z-10">
+    <Disclosure as="nav" className="dark:bg-gray-800 bg-white sticky w-full top-0 z-10">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
