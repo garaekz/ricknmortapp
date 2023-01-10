@@ -17,7 +17,7 @@ This is a full frontend app made with react so I was bound to use some of the to
 
 Clone me
 
-    git@github.com:garaekz/ricknmortapp.git
+    git clone git@github.com:garaekz/ricknmortapp.git
 
 Locate yourself inside the folder
 
